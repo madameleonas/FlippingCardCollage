@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Collage Blocks Demo</title>
+  <link rel="stylesheet" href="collage.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+</head>
+<body>
+
+<div class="collage-content-wrapper">
+
+  <!-- ROW 1 -->
+  <!-- Col 1-2: Wide hero tile -->
+  <div class="b b-purple b-wide b-flippable">
+    <div class="b-inner">
+      <div class="b-front">
+        <h3>Section Headline</h3>
+        <p>Supporting text that describes what this section is about and why it matters to the visitor.</p>
+        <a href="#" class="btn">Call to Action</a>
+        <button class="b-flip-trigger" aria-label="Learn more">Learn more <i class="ti ti-chevron-right"></i></button>
+      </div>
+      <div class="b-back">
+        <p>Additional detail or context that appears when the card flips. Keep this concise and focused.</p>
+        <a href="#">Learn more →</a>
+        <button class="b-flip-back" aria-label="Go back"><i class="ti ti-chevron-left"></i> Back</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Col 3: Tall tile — spans rows 1 and 2 -->
+  <div class="b b-green b-tall b-flippable">
+    <div class="b-inner">
+      <div class="b-front">
+        <svg class="draw-effect" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path fill="none" stroke="none" d="M0 0h24v24H0z"/>
+          <path pathLength="100" d="M9 4h6a2 2 0 0 1 2 2v14l-5-3l-5 3V6a2 2 0 0 1 2-2"/>
+        </svg>
+        <h3>Feature One</h3>
+        <button class="b-flip-trigger" aria-label="Learn more">Learn more <i class="ti ti-chevron-right"></i></button>
+      </div>
+      <div class="b-back">
+        <p>Describe this feature in a sentence or two. What does it do and why does it matter?</p>
+        <button class="b-flip-back" aria-label="Go back"><i class="ti ti-chevron-left"></i> Back</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Col 4 Row 1: stacks on top -->
+  <div class="b b-blue b-flippable">
+    <div class="b-inner">
+      <div class="b-front">
+        <svg class="draw-effect" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path fill="none" stroke="none" d="M0 0h24v24H0z"/>
+          <path pathLength="100" d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7"/>
+          <path pathLength="100" d="M9 16a5 5 0 1 1 6 0a3.5 3.5 0 0 0 -1 3a2 2 0 0 1 -4 0a3.5 3.5 0 0 0 -1 -3"/>
+          <path pathLength="100" d="M9.7 17l4.6 0"/>
+        </svg>
+        <h3>Feature Two</h3>
+        <button class="b-flip-trigger" aria-label="Learn more">Learn more <i class="ti ti-chevron-right"></i></button>
+      </div>
+      <div class="b-back">
+        <p>Describe this feature in a sentence or two. What does it do and why does it matter?</p>
+        <button class="b-flip-back" aria-label="Go back"><i class="ti ti-chevron-left"></i> Back</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 2 -->
+  <!-- Col 1: stacks below hero -->
+  <div class="b b-teal">
+    <div class="b-inner">
+      <div class="b-front">
+        <i class="ti ti-star"></i>
+        <h3>Feature Three</h3>
+        <button class="b-flip-trigger" aria-label="Learn more">Learn more <i class="ti ti-chevron-right"></i></button>
+      </div>
+      <div class="b-back"></div>
+    </div>
+  </div>
+
+  <!-- Col 2: stacks below hero -->
+  <div class="b b-purple">
+    <div class="b-inner">
+      <div class="b-front">
+        <i class="ti ti-layout-grid"></i>
+        <h3>Feature Four</h3>
+        <button class="b-flip-trigger" aria-label="Learn more">Learn more <i class="ti ti-chevron-right"></i></button>
+      </div>
+      <div class="b-back"></div>
+    </div>
+  </div>
+
+  <!-- Col 3 is taken by tall tile -->
+
+  <!-- Col 4 Row 2: stacks below Feature Two -->
+  <div class="b b-green">
+    <div class="b-inner">
+      <div class="b-front">
+        <i class="ti ti-files"></i>
+        <h3>Feature Five</h3>
+        <button class="b-flip-trigger" aria-label="Learn more">Learn more <i class="ti ti-chevron-right"></i></button>
+      </div>
+      <div class="b-back"></div>
+    </div>
+  </div>
+
+  <!-- ROW 3 -->
+  <div class="b b-blue b-wide">
+    <div class="b-inner">
+      <div class="b-front">
+        <i class="ti ti-brush"></i>
+        <h3>Feature Six</h3>
+        <button class="b-flip-trigger" aria-label="Learn more">Learn more <i class="ti ti-chevron-right"></i></button>
+      </div>
+      <div class="b-back"></div>
+    </div>
+  </div>
+
+  <div class="b b-teal">
+    <div class="b-inner">
+      <div class="b-front">
+        <i class="ti ti-adjustments"></i>
+        <h3>Feature Seven</h3>
+        <button class="b-flip-trigger" aria-label="Learn more">Learn more <i class="ti ti-chevron-right"></i></button>
+      </div>
+      <div class="b-back"></div>
+    </div>
+  </div>
+
+  <div class="b b-purple">
+    <div class="b-inner">
+      <div class="b-front">
+        <i class="ti ti-search"></i>
+        <h3>Feature Eight</h3>
+        <button class="b-flip-trigger" aria-label="Learn more">Learn more <i class="ti ti-chevron-right"></i></button>
+      </div>
+      <div class="b-back"></div>
+    </div>
+  </div>
+
+  <!-- ROW 4 -->
+  <div class="b b-green b-wide">
+    <div class="b-inner">
+      <div class="b-front">
+        <i class="ti ti-code"></i>
+        <h3>Feature Nine</h3>
+        <button class="b-flip-trigger" aria-label="Learn more">Learn more <i class="ti ti-chevron-right"></i></button>
+      </div>
+      <div class="b-back"></div>
+    </div>
+  </div>
+
+  <div class="b b-blue b-wide">
+    <div class="b-inner">
+      <div class="b-front">
+        <i class="ti ti-link"></i>
+        <h3>Feature Ten</h3>
+        <button class="b-flip-trigger" aria-label="Learn more">Learn more <i class="ti ti-chevron-right"></i></button>
+      </div>
+      <div class="b-back"></div>
+    </div>
+  </div>
+
+</div>
+
+<script src="collage.js"></script>
+</body>
+</html>

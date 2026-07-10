@@ -1,0 +1,244 @@
+/*  ----------- =collage content wrapper ---------------  */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap');
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 24px;
+  background: #f5f5f5;
+}
+
+@media (min-width: 780px) {
+  .collage-content-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .collage-content-wrapper .b-wide { grid-column: span 2; }
+  .collage-content-wrapper .b-tall { grid-row: span 2; }
+}
+@media (max-width: 779px) {
+  .collage-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.collage-content-wrapper .b {
+  padding: 0;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  min-height: 200px;
+}
+
+/* Card backgrounds */
+.collage-content-wrapper .b-purple .b-front,
+.collage-content-wrapper .b-purple .b-back { background-color: #e0daf1; }
+.collage-content-wrapper .b-teal .b-front,
+.collage-content-wrapper .b-teal .b-back { background-color: #ccedf0; }
+.collage-content-wrapper .b-blue .b-front,
+.collage-content-wrapper .b-blue .b-back { background-color: #d6e5f9; }
+.collage-content-wrapper .b-green .b-front,
+.collage-content-wrapper .b-green .b-back { background-color: #e4edd7; }
+
+/*
+  WCAG AA accessible text colors (contrast ratio >= 4.5:1 on card bg)
+  Purple bg #e0daf1 → text #3b2477  (contrast ~7.1:1)
+  Teal bg   #ccedf0 → text #00494f  (contrast ~7.3:1)
+  Blue bg   #d6e5f9 → text #173d6e  (contrast ~7.5:1)
+  Green bg  #e4edd7 → text #2e4a0e  (contrast ~8.1:1)
+*/
+.collage-content-wrapper .b-purple h3,
+.collage-content-wrapper .b-purple p,
+.collage-content-wrapper .b-purple a,
+.collage-content-wrapper .b-purple svg,
+.collage-content-wrapper .b-purple .ti,
+.collage-content-wrapper .b-purple .b-flip-trigger,
+.collage-content-wrapper .b-purple .b-flip-back { color: #3b2477; }
+
+.collage-content-wrapper .b-teal h3,
+.collage-content-wrapper .b-teal p,
+.collage-content-wrapper .b-teal a,
+.collage-content-wrapper .b-teal svg,
+.collage-content-wrapper .b-teal .ti,
+.collage-content-wrapper .b-teal .b-flip-trigger,
+.collage-content-wrapper .b-teal .b-flip-back { color: #00494f; }
+
+.collage-content-wrapper .b-blue h3,
+.collage-content-wrapper .b-blue p,
+.collage-content-wrapper .b-blue a,
+.collage-content-wrapper .b-blue svg,
+.collage-content-wrapper .b-blue .ti,
+.collage-content-wrapper .b-blue .b-flip-trigger,
+.collage-content-wrapper .b-blue .b-flip-back { color: #173d6e; }
+
+.collage-content-wrapper .b-green h3,
+.collage-content-wrapper .b-green p,
+.collage-content-wrapper .b-green a,
+.collage-content-wrapper .b-green svg,
+.collage-content-wrapper .b-green .ti,
+.collage-content-wrapper .b-green .b-flip-trigger,
+.collage-content-wrapper .b-green .b-flip-back { color: #2e4a0e; }
+
+/* b-inner always relative so b-front/back are contained */
+.collage-content-wrapper .b-inner {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  min-height: 200px;
+}
+
+.collage-content-wrapper .b-tall .b-inner {
+  min-height: 410px;
+}
+
+/* b-front and b-back always fill the tile */
+.collage-content-wrapper .b-front,
+.collage-content-wrapper .b-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.collage-content-wrapper .b-front .ti {
+  font-size: 24px;
+}
+
+.collage-content-wrapper .b-front svg {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 6px;
+}
+
+.collage-content-wrapper h3 {
+  margin: 0 0 4px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.3;
+}
+
+.collage-content-wrapper p {
+  margin: 0 0 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Back hidden by default */
+.collage-content-wrapper .b-back {
+  display: none;
+}
+
+/* Flip behavior */
+.collage-content-wrapper .b-flippable {
+  perspective: 1000px;
+}
+
+.collage-content-wrapper .b-flippable .b-inner {
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+}
+
+.collage-content-wrapper .b-flippable.is-flipped .b-inner {
+  transform: rotateY(180deg);
+}
+
+.collage-content-wrapper .b-flippable .b-front {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.collage-content-wrapper .b-flippable .b-back {
+  display: flex;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: rotateY(180deg);
+}
+
+/* Flip buttons — muted grey, WCAG AA on all card backgrounds */
+.collage-content-wrapper .b-flip-trigger,
+.collage-content-wrapper .b-flip-back {
+  font-size: 12px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px 0;
+  margin-top: 10px;
+  width: fit-content;
+  color: #595959 !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+.collage-content-wrapper .b-flip-trigger .ti,
+.collage-content-wrapper .b-flip-back .ti {
+  font-size: 14px;
+  color: #595959 !important;
+}
+.collage-content-wrapper .b-flip-trigger:hover,
+.collage-content-wrapper .b-flip-back:hover {
+  color: #333 !important;
+}
+.collage-content-wrapper .b-flip-trigger:hover .ti,
+.collage-content-wrapper .b-flip-back:hover .ti {
+  color: #333 !important;
+}
+
+/* CTA button */
+.collage-content-wrapper .btn {
+  display: inline-block;
+  background: #7b17ba;
+  color: #fff !important;
+  border-radius: 100px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+  text-decoration: none;
+  margin-bottom: 8px;
+  width: fit-content;
+}
+
+.collage-content-wrapper .b-back a {
+  font-size: 14px;
+  margin-top: 8px;
+  display: inline-block;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Draw effect */
+.draw-effect path,
+.draw-effect circle,
+.draw-effect rect,
+.draw-effect polyline,
+.draw-effect line {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+.draw-effect.is-visible path,
+.draw-effect.is-visible circle,
+.draw-effect.is-visible rect,
+.draw-effect.is-visible polyline,
+.draw-effect.is-visible line {
+  animation: draw-icon 1.4s ease-in-out 0.3s forwards;
+}
+
+@keyframes draw-icon {
+  to { stroke-dashoffset: 0; }
+}
