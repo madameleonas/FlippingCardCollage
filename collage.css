@@ -84,26 +84,27 @@ body {
 .collage-content-wrapper .b-green .b-flip-trigger,
 .collage-content-wrapper .b-green .b-flip-back { color: #2e4a0e; }
 
-/* b-inner always relative so b-front/back are contained */
+/* b-inner stacks front and back in one grid cell, so the tile is
+   as tall as whichever face has more content (never less than 200px) */
 .collage-content-wrapper .b-inner {
   position: relative;
   width: 100%;
   flex: 1;
   min-height: 200px;
+  display: grid;
 }
 
-.collage-content-wrapper .b-tall .b-inner {
-  min-height: 410px;
+/* Tall tiles only span two rows on desktop; on mobile they match the rest */
+@media (min-width: 780px) {
+  .collage-content-wrapper .b-tall .b-inner {
+    min-height: 410px;
+  }
 }
 
-/* b-front and b-back always fill the tile */
+/* b-front and b-back share the same cell and fill the tile */
 .collage-content-wrapper .b-front,
 .collage-content-wrapper .b-back {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  grid-area: 1 / 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -241,4 +242,50 @@ body {
 
 @keyframes draw-icon {
   to { stroke-dashoffset: 0; }
+}
+
+/* Screen-reader-only text (gives each flip button a unique accessible name) */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Visible keyboard focus on the flip buttons */
+.collage-content-wrapper .b-flip-trigger:focus-visible,
+.collage-content-wrapper .b-flip-back:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Reduced motion: swap faces instantly and show icons fully drawn */
+@media (prefers-reduced-motion: reduce) {
+  .collage-content-wrapper .b-flippable .b-inner {
+    transition: none;
+  }
+  .draw-effect path,
+  .draw-effect circle,
+  .draw-effect rect,
+  .draw-effect polyline,
+  .draw-effect line,
+  .draw-effect.is-visible path,
+  .draw-effect.is-visible circle,
+  .draw-effect.is-visible rect,
+  .draw-effect.is-visible polyline,
+  .draw-effect.is-visible line {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Back face receives focus programmatically on flip; it isn't a control */
+.collage-content-wrapper .b-back:focus {
+  outline: none;
 }
